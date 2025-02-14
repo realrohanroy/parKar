@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Photos - ParKar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-2">Add Photos of Your Space</h1>
+            <p class="text-gray-600">Great photos help guests understand your parking space better</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex-1">
+                <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto">
+                    <i class="fas fa-check"></i>
+                </div>
+                <p class="text-center mt-2 text-sm font-medium">Basic Info</p>
+            </div>
+            <div class="flex-1">
+                <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto">2</div>
+                <p class="text-center mt-2 text-sm font-medium">Photos</p>
+            </div>
+            <div class="flex-1">
+                <div class="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center mx-auto">3</div>
+                <p class="text-center mt-2 text-sm font-medium">Pricing</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="space-y-6">
+                <!-- Photo Upload Area -->
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                    <div class="space-y-4">
+                        <i class="fas fa-camera text-4xl text-gray-400"></i>
+                        <div>
+                            <p class="text-lg font-medium">Drag and drop your photos here</p>
+                            <p class="text-gray-500 text-sm">or</p>
+                        </div>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            Browse Files
+                        </button>
+                        <p class="text-sm text-gray-500">Upload at least 3 photos (max 10)</p>
+                    </div>
+                </div>
+
+                <!-- Photo Preview Grid -->
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="relative">
+                        <img src="/api/placeholder/200/150" alt="Parking Space" class="w-full h-32 object-cover rounded-lg"/>
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-red-600">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="/api/placeholder/200/150" alt="Parking Space" class="w-full h-32 object-cover rounded-lg"/>
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-red-600">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Photo Tips -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-medium mb-2">Tips for great parking space photos:</h3>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Take photos during daylight hours</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Show the parking space entrance clearly</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Include photos of any special features (EV charging, security cameras)</li>
+                        <li><i class="fas fa-check text-green-600 mr-2"></i>Add photos of parking space measurements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="mt-8 flex justify-between">
+                <button type="button" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Back
+                </button>
+                <div class="space-x-4">
+                    <button type="button" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                        Save Draft
+                    </button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        Next: Set Pricing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

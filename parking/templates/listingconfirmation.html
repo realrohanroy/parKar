@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Published Successfully - ParKar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Success Message -->
+        <div class="text-center mb-12">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-3xl text-green-600"></i>
+            </div>
+            <h1 class="text-3xl font-bold mb-2">Your Listing is Live!</h1>
+            <p class="text-gray-600">Congratulations! Your parking space has been successfully published on ParKar</p>
+        </div>
+
+        <!-- Listing Preview -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="flex items-start space-x-4">
+                <img src="/api/placeholder/200/150" alt="Parking Space" class="w-32 h-24 object-cover rounded-lg"/>
+                <div>
+                    <h2 class="font-semibold text-lg">123 Main Street Driveway</h2>
+                    <p class="text-gray-600">San Francisco, CA 94105</p>
+                    <div class="mt-2">
+                        <span class="text-lg font-semibold text-blue-600">$5.00/hour</span>
+                        <span class="text-gray-600 text-sm"> • Standard Size</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-6">Next Steps</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar text-blue-600"></i>
+                    </div>
+                    <h3 class="font-medium mb-2">Set Your Availability</h3>
+                    <p class="text-sm text-gray-600">Update your calendar to show when your space is available</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bell text-blue-600"></i>
+                    </div>
+                    <h3 class="font-medium mb-2">Enable Notifications</h3>
+                    <p class="text-sm text-gray-600">Get alerts when someone books your space</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-share-alt text-blue-600"></i>
+                    </div>
+                    <h3 class="font-medium mb-2">Share Your Listing</h3>
+                    <p class="text-sm text-gray-600">Promote your space on social media</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-center">
+                View Your Listing
+            </a>
+            <a href="#" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center">
+                Go to Dashboard
+            </a>
+        </div>
+
+        <!-- Host Support -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-600">Need help? <a href="#" class="text-blue-600 hover:text-blue-700">Contact Host Support</a></p>
+        </div>
+    </div>
+</body>
+</html>

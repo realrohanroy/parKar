@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Underground Parking - ParKar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">ParKar</div>
+                </div>
+                
+                <div class="flex-1 flex items-center justify-center px-8">
+                    <div class="max-w-lg w-full">
+                        <div class="relative">
+                            <input type="text" class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search for parking spaces...">
+                            <button class="absolute right-3 top-2.5">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-blue-600">List Your Space</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="text-gray-700 hover:text-blue-600">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="text-gray-700 hover:text-blue-600">Login</a>
+                        <a href="{% url 'register' %}" class="text-gray-700 hover:text-blue-600">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Image Gallery -->
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <div class="col-span-2 row-span-2">
+                <img src="{{ parking_space.image_url }}" alt="Main parking space image" class="w-full h-full object-cover rounded-lg"/>
+            </div>
+            <div>
+                <img src="/api/placeholder/300/200" alt="Additional view" class="w-full h-full object-cover rounded-lg"/>
+            </div>
+            <div>
+                <img src="/api/placeholder/300/200" alt="Additional view" class="w-full h-full object-cover rounded-lg"/>
+            </div>
+            <div>
+                <img src="/api/placeholder/300/200" alt="Additional view" class="w-full h-full object-cover rounded-lg"/>
+            </div>
+            <div>
+                <img src="/api/placeholder/300/200" alt="Additional view" class="w-full h-full object-cover rounded-lg"/>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="col-span-2">
+                <h1 class="text-3xl font-semibold mb-4">{{ parking_space.name }}</h1>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <span class="ml-1">4.9 (124 reviews)</span>
+                    </div>
+                    <span>•</span>
+                    <span>{{ parking_space.location }}</span>
+                </div>
+
+                <div class="border-t border-b py-6 mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Space Details</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-ruler-combined text-gray-400"></i>
+                            <span>Standard Size Space</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-video text-gray-400"></i>
+                            <span>24/7 Security Cameras</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-door-closed text-gray-400"></i>
+                            <span>Gated Entry</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-gray-400"></i>
+                            <span>24/7 Access</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Description</h2>
+                    <p class="text-gray-600">{{ parking_space.description }}</p>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Location</h2>
+                    <div class="h-64 bg-gray-200 rounded-lg">
+                        <!-- Map placeholder -->
+                        <img src="/api/placeholder/800/256" alt="Map" class="w-full h-full object-cover rounded-lg"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Card -->
+            <div class="sticky top-24">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-2xl font-bold">${{ parking_space.price_per_hour }}</span>
+                        <span class="text-gray-600">per hour</span>
+                    </div>
+
+                    <div class="space-y-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Date</label>
+                            <input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Start Time</label>
+                                <input type="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">End Time</label>
+                                <input type="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700">
+                        Book Now
+                    </button>
+
+                    <div class="mt-4 text-center text-gray-600">
+                        <p>You won't be charged yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
