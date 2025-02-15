@@ -37,6 +37,27 @@ def user_login(request):
 def listingpage(request):
     return render(request, 'listingpage.html')
 
+def addphotos(request):
+    return render(request, 'addphotos.html')
+
+
+from django.shortcuts import render, redirect
+from .forms import PhotosForm
+from .models import Photos
+
+def upload_photos(request):
+    if request.method == 'POST':
+        form = PhotosForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('setpricing')  # Redirect to a success page or another view
+    else:
+        form = PhotosForm()
+    return render(request, 'addphotos.html', {'form': form})
+
+def setpricing(request):
+    return render(request, 'setpricing.html')  # Create a success.html template to show a success message
+
 @login_required
 def user_logout(request):
     logout(request)

@@ -1,6 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
+
+from django.db import models
+
+class Photos(models.Model):
+    image = models.ImageField(upload_to='photos/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Photo {self.id} uploaded at {self.uploaded_at}"
+
+
 class ParkingSpace(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
