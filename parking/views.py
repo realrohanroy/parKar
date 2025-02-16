@@ -1,12 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import ParkingSpace, Booking
-from .forms import BookingForm
-
-from django.shortcuts import render, redirect
+from .models import ParkingSpace, Booking, ParkingSpacePhoto
+from .forms import BookingForm, RegisterForm, LoginForm, ParkingSpaceForm
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
-from .forms import RegisterForm, LoginForm
 
 def register(request):
     if request.method == 'POST':
@@ -33,30 +29,56 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'authentications.html', {'form': form, 'tab': 'login'})
 
-
+@login_required
 def listingpage(request):
-    return render(request, 'listingpage.html')
+    if request.method == 'POST':
+        form = ParkingSpaceForm(request.POST)
+        if form.is_valid():
+            # Store the form data in the session
+            request.session['parking_space_data'] = form.cleaned_data
+            return redirect('addphotos')  # Redirect to add photos
+    else:
+        form = ParkingSpaceForm()
+    return render(request, 'listingpage.html', {'form': form})
 
-def addphotos(request):
+@login_required
+def add_photos(request):
+    if request.method == 'POST':
+        images = request.FILES.getlist('image')
+        
+        if len(images) < 3:
+            return render(request, 'addphotos.html', {'error': 'Please upload at least 3 photos'})
+        
+        # Create the parking space object from session data
+        parking_space_data = request.session.get('parking_space_data')
+        if parking_space_data:
+            parking_space = ParkingSpace(**parking_space_data)
+            parking_space.user = request.user  # Set the user
+            parking_space.save()  # Save the parking space to the database
+            
+            # Save uploaded photos
+            for img in images[:10]:
+                ParkingSpacePhoto.objects.create(parking_space=parking_space, image=img)
+            
+            # Clear the session data
+            del request.session['parking_space_data']
+            
+            return redirect('setpricing', space_id=parking_space.id)  # Redirect to set pricing
     return render(request, 'addphotos.html')
 
-
-from django.shortcuts import render, redirect
-from .forms import PhotosForm
-from .models import Photos
-
-def upload_photos(request):
+@login_required
+def set_pricing(request, space_id):
+    parking_space = get_object_or_404(ParkingSpace, id=space_id, user=request.user)
+    
     if request.method == 'POST':
-        form = PhotosForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('setpricing')  # Redirect to a success page or another view
-    else:
-        form = PhotosForm()
-    return render(request, 'addphotos.html', {'form': form})
-
-def setpricing(request):
-    return render(request, 'setpricing.html')  # Create a success.html template to show a success message
+        # Assuming you have a form to set pricing
+        pricing = request.POST.get('pricing')  # Get pricing from the form
+        parking_space.price_per_hour = pricing  # Set the pricing
+        parking_space.save()  # Save the updated parking space
+        
+        return redirect('home')  # Redirect to home or another page after setting pricing
+    
+    return render(request, 'setpricing.html', {'parking_space': parking_space})
 
 @login_required
 def user_logout(request):
@@ -90,7 +112,7 @@ def payment(request, id):
             return redirect('booking_confirmation', booking.id)
     else:
         form = BookingForm()
-    return render(request, 'payment.html', {'form': form, 'parking_space': parking_space})
+    return render(request, ' payment.html', {'form': form, 'parking_space': parking_space})
 
 @login_required
 def booking_confirmation(request, id):

@@ -9,8 +9,8 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('listingpage/', views.listingpage, name='listingpage'),
-    path('addphotos/',views.addphotos, name='addphotos'),
-    path('setpricing/', views.setpricing, name='setpricing'),
+    path('add-photos/', views.add_photos, name='addphotos'),
+    path('set-pricing/<int:space_id>/', views.set_pricing, name='setpricing'),
 
     path('search/', views.search_results, name='search_results'),
     path('details/<int:id>/', views.result_details, name='result_details'),
