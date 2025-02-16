@@ -1,0 +1,6 @@
+parkar/__pycache__/
+parking/__pycache__/
+parking/migrations/__pycache__
+*.pyc
+db.sqlite3
+
