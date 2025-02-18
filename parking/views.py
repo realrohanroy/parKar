@@ -39,7 +39,7 @@ def listingpage(request):
             return redirect('addphotos')  # Redirect to add photos
     else:
         form = ParkingSpaceForm()
-    return render(request, 'listingpage.html', {'form': form})
+    return render(request, 'parking/listingpage.html', {'form': form})
 
 @login_required
 def add_photos(request):
@@ -47,7 +47,7 @@ def add_photos(request):
         images = request.FILES.getlist('image')
         
         if len(images) < 3:
-            return render(request, 'addphotos.html', {'error': 'Please upload at least 3 photos'})
+            return render(request, 'parking/addphotos.html', {'error': 'Please upload at least 3 photos'})
         
         # Create the parking space object from session data
         parking_space_data = request.session.get('parking_space_data')
@@ -64,7 +64,7 @@ def add_photos(request):
             del request.session['parking_space_data']
             
             return redirect('setpricing', space_id=parking_space.id)  # Redirect to set pricing
-    return render(request, 'addphotos.html')
+    return render(request, 'parking/addphotos.html')
 
 @login_required
 def set_pricing(request, space_id):
@@ -78,7 +78,7 @@ def set_pricing(request, space_id):
         
         return redirect('home')  # Redirect to home or another page after setting pricing
     
-    return render(request, 'setpricing.html', {'parking_space': parking_space})
+    return render(request, 'parking/setpricing.html', {'parking_space': parking_space})
 
 @login_required
 def user_logout(request):
@@ -109,12 +109,12 @@ def payment(request, id):
             booking.parking_space = parking_space
             booking.total_amount = parking_space.price_per_hour * (booking.end_time.hour - booking.start_time.hour)
             booking.save()
-            return redirect('booking_confirmation', booking.id)
+            return redirect('parking/booking_confirmation', booking.id)
     else:
         form = BookingForm()
-    return render(request, ' payment.html', {'form': form, 'parking_space': parking_space})
+    return render(request, ' parking/payment.html', {'form': form, 'parking_space': parking_space})
 
 @login_required
 def booking_confirmation(request, id):
     booking = get_object_or_404(Booking, id=id)
-    return render(request, 'bookingconfirmation.html', {'booking': booking})
+    return render(request, 'parking/bookingconfirmation.html', {'booking': booking})
