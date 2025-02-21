@@ -29,7 +29,7 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'parking/authentications.html', {'form': form, 'tab': 'login'})
 
-@login_required
+@login_required(login_url='authentications')
 def listingpage(request):
     if request.method == 'POST':
         form = ParkingSpaceForm(request.POST)
@@ -39,7 +39,7 @@ def listingpage(request):
             return redirect('addphotos')  # Redirect to add photos
     else:
         form = ParkingSpaceForm()
-    return render(request, 'listingpage.html', {'form': form})
+    return render(request, 'parking/listingpage.html', {'form': form})
 
 @login_required
 def add_photos(request):
@@ -47,7 +47,7 @@ def add_photos(request):
         images = request.FILES.getlist('image')
         
         if len(images) < 3:
-            return render(request, 'addphotos.html', {'error': 'Please upload at least 3 photos'})
+            return render(request, 'parking/addphotos.html', {'error': 'Please upload at least 3 photos'})
         
         # Create the parking space object from session data
         parking_space_data = request.session.get('parking_space_data')
@@ -63,8 +63,8 @@ def add_photos(request):
             # Clear the session data
             del request.session['parking_space_data']
             
-            return redirect('setpricing', space_id=parking_space.id)  # Redirect to set pricing
-    return render(request, 'addphotos.html')
+            return redirect('parking/setpricing', space_id=parking_space.id)  # Redirect to set pricing
+    return render(request, 'parking/addphotos.html')
 
 @login_required
 def set_pricing(request, space_id):
@@ -78,7 +78,7 @@ def set_pricing(request, space_id):
         
         return redirect('home')  # Redirect to home or another page after setting pricing
     
-    return render(request, 'setpricing.html', {'parking_space': parking_space})
+    return render(request, 'parking/setpricing.html', {'parking_space': parking_space})
 
 @login_required
 def user_logout(request):
@@ -98,6 +98,18 @@ def result_details(request, id):
     parking_space = get_object_or_404(ParkingSpace, id=id)
     return render(request, 'parking/resultdetails.html', {'parking_space': parking_space})
 
+# views.py
+from django.shortcuts import render
+
+def dummy_page(request):
+    return render(request, 'parking/dummypage.html')
+def dummy_page2(request):
+    return render(request, 'parking/dummypage2.html')
+def dummy_page3(request):
+    return render(request, 'parking/dummypage3.html')
+def dummy_page4(request):
+    return render(request, 'parking/dummypage4.html')
+
 @login_required
 def payment(request, id):
     parking_space = get_object_or_404(ParkingSpace, id=id)
@@ -112,9 +124,9 @@ def payment(request, id):
             return redirect('booking_confirmation', booking.id)
     else:
         form = BookingForm()
-    return render(request, ' payment.html', {'form': form, 'parking_space': parking_space})
+    return render(request, 'parking/payment.html', {'form': form, 'parking_space': parking_space})
 
 @login_required
 def booking_confirmation(request, id):
     booking = get_object_or_404(Booking, id=id)
-    return render(request, 'bookingconfirmation.html', {'booking': booking})
+    return render(request, 'parking/bookingconfirmation.html', {'booking': booking})

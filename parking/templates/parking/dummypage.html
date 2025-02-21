@@ -1,0 +1,144 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Space 1 - Parkar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen p-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="mb-4">
+                <ol class="flex text-gray-600 text-sm">
+                    <li><a href="home.html" class="hover:text-blue-600">Search</a></li>
+                    <li class="mx-2">/</li>
+                    <li class="text-gray-900">Downtown Secure Parking</li>
+                </ol>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Images and Details -->
+                <div class="lg:col-span-2">
+                    <!-- Image Gallery -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                        <img src="{% static 'parking/parking3.jpg'%}" alt="Main Parking View" class="w-full h-96 object-cover">
+                        <div class="grid grid-cols-4 gap-2 p-2">
+                            <img src="https://5.imimg.com/data5/CF/SH/MY-27326147/car-parking-shed-500x500.jpg" alt="Parking View 1" class="w-full h-24 object-cover rounded">
+                            <img src="https://5.imimg.com/data5/SU/BH/MY-23662085/car-parking-tensile-structure-500x500.jpg" alt="Parking View 2" class="w-full h-24 object-cover rounded">
+                            <img src="https://5.imimg.com/data5/ANDROID/Default/2023/9/340674644/BH/VK/IZ/91372551/product-jpeg-500x500.jpg" alt="Parking View 3" class="w-full h-24 object-cover rounded">
+                            <img src="https://5.imimg.com/data5/SELLER/Default/2022/9/WQ/WM/MO/1479883/car-parking-tensile-structure-service-500x500.jpg" alt="Parking View 4" class="w-full h-24 object-cover rounded">
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h1 class="text-2xl font-bold text-gray-900 mb-4">Downtown Secure Parking</h1>
+                        <p class="text-gray-600 mb-6">Location: 0.5 miles from city center</p>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-600">Type</p>
+                                <p class="font-semibold">Covered</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-600">Size</p>
+                                <p class="font-semibold">Standard</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-600">Access</p>
+                                <p class="font-semibold">24/7</p>
+                            </div>
+                        </div>
+
+                        <h2 class="text-xl font-semibold mb-4">Amenities</h2>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                CCTV Surveillance
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Security Guard
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                EV Charging
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Covered Parking
+                            </div>
+                        </div>
+
+                        <h2 class="text-xl font-semibold mb-4">Rules & Information</h2>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
+                            <li>Please arrive on time for your booking</li>
+                            <li>Keep your booking confirmation handy</li>
+                            <li>Follow posted speed limits</li>
+                            <li>Park within designated spaces only</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column - Booking Form -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 sticky top-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600">₹50/hr</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-1">4.9 (124 reviews)</span>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
+                                    <input type="datetime-local" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
+                                    <input type="datetime-local" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                
+                                <div class="border-t pt-4">
+                                    <div class="flex justify-between mb-2">
+                                        <span>Rate (4 hours)</span>
+                                        <span>₹200.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Service fee</span>
+                                        <span>₹20.00</span>
+                                    </div>
+                                    <div class="flex justify-between font-bold">
+                                        <span>Total</span>
+                                        <span>₹220.00</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Continue to Payment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

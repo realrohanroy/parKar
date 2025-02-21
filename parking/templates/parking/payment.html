@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Booking - Parkar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen p-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="mb-4">
+                <ol class="flex text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-blue-600">Search</a></li>
+                    <li class="mx-2">/</li>
+                    <li><a href="#" class="hover:text-blue-600">Downtown Secure Parking</a></li>
+                    <li class="mx-2">/</li>
+                    <li class="text-gray-900">Payment</li>
+                </ol>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Payment Options -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Choose Payment Method</h2>
+                        
+                        <!-- Payment Method Tabs -->
+                        <div class="mb-6">
+                            <div class="border-b border-gray-200">
+                                <nav class="-mb-px flex space-x-8">
+                                    <button class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Credit/Debit Card
+                                    </button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        UPI
+                                    </button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Net Banking
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Card Payment Form -->
+                        <div id="card-payment" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                    <input type="text" placeholder="1234 5678 9012 3456" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                    <input type="text" placeholder="MM/YY" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                    <input type="text" placeholder="123" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
+                                    <input type="text" placeholder="John Smith" class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UPI Payment (Hidden by default) -->
+                        <div id="upi-payment" class="hidden space-y-4">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="p-4 border rounded-lg text-center cursor-pointer hover:border-blue-500">
+                                    <img src="/api/placeholder/48/48" alt="Google Pay" class="mx-auto mb-2">
+                                    <span class="text-sm">Google Pay</span>
+                                </div>
+                                <div class="p-4 border rounded-lg text-center cursor-pointer hover:border-blue-500">
+                                    <img src="/api/placeholder/48/48" alt="PhonePe" class="mx-auto mb-2">
+                                    <span class="text-sm">PhonePe</span>
+                                </div>
+                                <div class="p-4 border rounded-lg text-center cursor-pointer hover:border-blue-500">
+                                    <img src="/api/placeholder/48/48" alt="Paytm" class="mx-auto mb-2">
+                                    <span class="text-sm">Paytm</span>
+                                </div>
+                                <div class="p-4 border rounded-lg text-center cursor-pointer hover:border-blue-500">
+                                    <img src="/api/placeholder/48/48" alt="BHIM" class="mx-auto mb-2">
+                                    <span class="text-sm">BHIM</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Enter UPI ID</label>
+                                <div class="flex">
+                                    <input type="text" placeholder="username@upi" class="flex-1 px-4 py-2 border rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
+                                    <button class="bg-blue-600 text-white px-6 py-2 rounded-r-lg hover:bg-blue-700">Verify</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Booking Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 sticky top-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Booking Summary</h2>
+                        <div class="flex items-start space-x-4 mb-6">
+                            <img src="/api/placeholder/120/120" alt="Parking Space" class="w-24 h-24 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-semibold">Downtown Secure Parking</h3>
+                                <p class="text-gray-600">123 Main Street</p>
+                                <div class="mt-2 text-sm text-gray-600">
+                                    <p>Check-in: Mar 20, 2024 10:00 AM</p>
+                                    <p>Check-out: Mar 20, 2024 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4 space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Rate (4 hours)</span>
+                                <span>$20.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Service fee</span>
+                                <span>$2.00</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold pt-2">
+                                <span>Total</span>
+                                <span>$22.00</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label class="flex items-center mb-4">
+                                <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-600">I agree to the terms and conditions</span>
+                            </label>
+                            <button class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                Pay $22.00
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
